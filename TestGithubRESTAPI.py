@@ -27,13 +27,13 @@ class TestGithubRESTAPI(unittest.TestCase):
         mock_responses[14].json.return_value = [{'commit': 2}, {'commit': 5}]
         mock_responses[15].json.return_value = [{'commit': 2}, {'commit': 3}]
         mock_responses[16].json.return_value = [{'commit': 2}, {'commit': 5}]
-        mock_responses[17].json.return_value = [{'commit': 2}, {'commit': 5}, {'commit': 6}]
+        mock_responses[17].json.return_value = [{'commit': 2}, {'commit': 5}]
         mock_get.side_effect = mock_responses
 
         self.assertEqual(list_github_user_repos('jcafiero'), [('Courses', 17), ('CS-182', 2), ('flawless', 16),  ('future_shop', 15), ('GithubRestSSW567', 9), ('HackerRank',20), ('HackerRank2DArray', 2), ('HackPrinceton2016', 62), ('HackRU2018', 28), ('hello-world', 4), ('hello-world-1', 2), ('jcafiero.github.io', 30), ('LargestPalindromeProduct', 12), ('opencvdrawing', 5), ('ProjectEuler-59-XOR-Decryption', 3),('SSW567ClassifyTriangles', 5), ('TriangleSSW567', 5)])
 
     #britrollo is a github user with 0 repos
-    def testBritrollo(self):
+    def testBritrollo(self, mock_get):
         mock_responses = [Mock()]
         mock_responses[0].json.return_value = []
         mock_get.side_effect = mock_responses
