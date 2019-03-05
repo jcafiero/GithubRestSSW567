@@ -13,7 +13,7 @@ def list_github_user_repos(ID):
     repos_url = "https://api.github.com/users/" + ID + "/repos"
     repo_request = requests.get(repos_url)
     repos = repo_request.json()
-    for repo in list(repos):
+    for repo in repos:
         commits_url = "https://api.github.com/repos/" + ID + "/"+ repo["name"] + "/commits"
         commits_request = requests.get(commits_url)
         commits = commits_request.json()
